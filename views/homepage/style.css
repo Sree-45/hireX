@@ -1,0 +1,16 @@
+.Hero-Header {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.imagekelas {
+    max-width: 90%; 
+    max-height: 90%; 
+    margin: auto; 
+    display: block; 
+}
+.custom-font {
+    font-family: 'YourFontFamily', sans-serif; 
+    font-size: 18px; }

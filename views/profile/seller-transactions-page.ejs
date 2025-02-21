@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Profile</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Acme&family=Chewy&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/css/ionicons.min.css" integrity="sha512-JApjWRnfonFeGBY7t4yq8SWr1A6xVYEJgO/UMIYONxaR3C9GETKUg0LharbJncEzJF5Nmiv+Pr5QNulr81LjGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="/css/profile/Block-Responsive-Item-List.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="/css/profile/image-card-materialize.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/profile/Navigation-Profile.css">
+	<link rel="stylesheet" href="/css/profile/styles.css">
+	<link rel="stylesheet" href="/css/profile/Profile-Card.css">
+	<link rel="stylesheet" href="/css/profile/Social-Icons.css">
+	<link rel="stylesheet" href="/css/profile/Table-With-Search-1.css">
+	<link rel="stylesheet" href="/css/profile/Table-With-Search.css">
+</head>
+
+<body style="font-family: Chewy, cursive;">
+	<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+		<div class="container">
+			<a class="navbar-brand" href="/" style="font-family: Chewy, cursive; font-size: 32px;">Hirex</a>
+			<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav mr-auto"></ul>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile"
+						style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
+				</span>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile/settings-page"
+						style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
+				</span>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile/logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
+				</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="profile-card">
+		<div class="profile-back" style="background-color: #ff5331;"></div>
+		<img class="rounded-circle profile-pic" src="/uploads/avatars/<%= data[0].user_avatar %>">
+		<h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;">
+			<%= data[0].user_name %>
+		</h3>
+		<p class="profile-bio" style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;">
+			<%= data[0].user_email %>
+		</p>
+	</div>
+
+	<div class="col-md-12 search-table-col">
+		<span class="counter pull-right"></span>
+		<div class="form-group pull-right col-lg-4">
+			<input type="text" class="search form-control" placeholder="Search by typing here..">
+		</div>
+		<div class="table-responsive table-bordered table table-hover table-bordered results">
+			<table class="table table-bordered table-hover">
+				<thead class="bill-header cs">
+					<tr>
+						<th id="trs-hd" class="col-lg-1" style="width: 18%;">Service Name</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 18%;">Buyer</th>
+						<th id="trs-hd" class="col-lg-3" style="width: 12%;">Price</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 34%;">Note</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 18%;">Date</th>
+						<th id="trs-hd" class="col-lg-2">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="warning no-result">
+						<td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+					</tr>
+					<% for(var i = 0; i < transact.length;i++){ %>
+					<tr>
+						<td><%= transact[i].Service.service_title %></td>
+						<td style="width: 18%;"><%= transact[i].User.user_name %></td>
+						<td><%= transact[i].Service.service_price %></td>
+						<td><%= transact[i].transaction_req %></td>
+						<td><%= transact[i].transaction_datetime %></td>
+						<td>
+							<button class="btn btn-success" style="margin-left: 5px;" type="submit">
+								<a class="fa fa-check" style="font-size: 15px;"
+									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+							</button>
+							<button class="btn btn-danger"
+								style="margin-left: 5px; margin-right: auto; margin-bottom: auto;" type="submit">
+								<a class="fa fa-trash" style="font-size: 15px;"
+									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+							</button>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<p style="color:grey; font-family: Acme, sans-serif; font-size: 18px;">Copyright (c) 2019 Hirex</p>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/js/profile/Table-With-Search.js"></script>
+<script type="text/javascript">
+	const modal = document.getElementById("myModal");
+
+	const btn = document.getElementById("myBtn");
+
+	const span = document.getElementsByClassName("close")[0];
+
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
+
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
+
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
+
+</html>

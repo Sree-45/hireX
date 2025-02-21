@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include ../partials/head %>
+</head>
+
+<body>
+	<% include ../partials/menu %>
+
+	<div class="container" style="min-height: 550px;">
+		<div class="card-view">
+			<div class="row">
+				<% include ../partials/card-view %>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid m-0 p-0">
+		<% include ../partials/footer %>
+	</div>
+</body>
+
+<% include ../partials/script %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#taberu').DataTable();
+	})
+</script>
+
+</html>
