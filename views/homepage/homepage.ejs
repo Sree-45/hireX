@@ -2,108 +2,193 @@
 <html>
 
 <head>
-	<% include ../partials/head %>
+    <% include ../partials/head %>
+    <style>
+        .self-branding.Hero-Header {
+            box-shadow: none; /* Remove any shadow */
+            padding: 20px 0; /* Add some padding for better spacing */
+        }
+        .self-branding.Hero-Header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .self-branding.Hero-Header .text-left {
+            text-align: left;
+        }
+        .team-member img {
+            width: 100%;
+            height: 200px; /* Set a fixed height for all images */
+            object-fit: cover; /* Ensure images cover the area without distortion */
+            border-radius: 10px;
+        }
+        .team-member {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .team-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Ensure the items wrap to the next line if necessary */
+        }
+        .team-section .row {
+            justify-content: center; /* Center the row content */
+        }
+    </style>
 </head>
 
 <body>
-	<% include ../partials/menu %>
-	<div class="text-center">
-		<img src="/assets/XXYDUWQD[1].png" alt="Hero Image" style="padding-top: 50px; height: 80vh;">
-	</div>
+    <% include ../partials/menu %>
+    <div class="text-center">
+        <img src="/assets/Nested Sequence 01.00_00_04_06.Still001.png" alt="Hero Image" style="height: 100vh;">
+    </div>
 
-	<div>
-		
-		
-			
-		
-		<div class="second-section">
-			<div class="popular ">
-				<div class="text-center"><h3><STRONG>Find Your Design Here</STRONG></h3></div>
-				
+    <div>
+        <div class="second-section">
+            <div class="popular ">
+                <div class="text-center"><h3><STRONG>Find Your work Here</STRONG></h3></div>
+                <div class="row">
+                    <div class="col-sm-3" onclick="location.href='/products/9';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/envato-labs-image-edit-21.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title"><b>Video Editing</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" onclick="location.href='/products/1';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/Untitled.png">
+                            <div class="card-img-overlay">
+                                <h6 class="card-title"><b>Web Design></b></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" onclick="location.href='/products/2';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/concentrated-young-woman-designer.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title"><b>social media marketing</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" onclick="location.href='/products/4';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/freepik__expand__59943.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title" style="color: black;"><b>logo design</b></h5>
+                            </div>
+                        </div>
+                    </div>
 
-				<div class="row">
-					<div class="col-sm-3" onclick="location.href='/products/1';">
-						<div class="card bg-black text-white">
-							<img src="https://user-images.githubusercontent.com/30113370/147396256-4d8e9a19-4a25-4832-ae41-7c2ab75f2aa2.jpg">
-							<div class="card-img-overlay">
-								<h5 class="card-title">Web Design</h5>
-								<p class="card-text">Find your Web design here</p>
-							</div>
-						</div>
-					</div>
+                    <div class="col-sm-3" onclick="location.href='/products/5';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/freepik__upload__55649.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title"><b>UI Design</b></h5>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col-sm-3" onclick="location.href='products/2';">
-						<div class="card bg-black text-white">
-							<img src="https://user-images.githubusercontent.com/30113370/147396248-e3bea92a-201c-4422-9aae-7e620c49e105.jpg">
-							<div class="card-img-overlay">
-								<h5 class="card-title">Clothes</h5>
-								<p class="card-text">Find your Clothe's design here</p>
-							</div>
-						</div>
-					</div>
+                    <div class="col-sm-3" onclick="location.href='/products/6';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/freepik__expand__98360.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title" style="color: black;"><b>UX Design</b></h5>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col-sm-3" onclick="location.href='products/3';">
-						<div class="card bg-black text-white">
-							<img src="https://user-images.githubusercontent.com/30113370/147396267-d264df6b-5f6d-41cb-b1c6-c941f9c4a55e.jpg">
-							<div class="card-img-overlay">
-								<h5 class="card-title">Printing</h5>
-								<p class="card-text">Find Best Printout design here</p>
-							</div>
-						</div>
-					</div>
+                    <div class="col-sm-3" onclick="location.href='/products/7';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/premium_photo-1682140914933-f9704d7bc14f.PNG">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title" style="color: black;"><b>Product Design</b></h5>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col-sm-3" onclick="location.href='products/4';">
-						<div class="card bg-black text-white">
-							<img src="https://user-images.githubusercontent.com/30113370/147396285-e01789f7-c689-4035-91aa-2aeaabc9db8c.jpg">
-							<div class="card-img-overlay">
-								<h5 class="card-title">Brand Logo</h5>
-								<p class="card-text">Find your Brand Logo design here</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                    <div class="col-sm-3" onclick="location.href='/products/8';">
+                        <div class="card bg-black text-white">
+                            <img src="/assets/freepik__expand__5599.png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title"><b>Motion Graphics</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="self-branding Hero-Header">
-				<div class="row">
-					<div class="col-md-6">
-						<H4><STRONG>Make Your Live Easier With Hirex</STRONG></H4>
-						<ul>
-							<li>
-								<H5><STRONG>Know the Price Upfront</STRONG></H5>
-								<p>Find any service within minutes and know exacly what you'l pay! just a fixed price!
-								</p>
-							</li>
-							<li>
-								<H5><STRONG>We're 24/7 for you :)</STRONG></H5>
-								<p>Hirex is here for you, anything from doing your job until give you a job.</p>
-							</li>
-							<li>
-								<H5><STRONG>We Provide What You Need</STRONG></H5>
-								</H5>
-								<p>We will serve you even if your request is strange</p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<img src="https://user-images.githubusercontent.com/30113370/147396286-39eced0b-67e2-4400-a612-2d81860188b5.jpg">
-					</div>
-				</div>
-			</div>
+            <div class="self-branding Hero-Header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center">
+                            <h4><strong>Simplify Your Life with Hirex</strong></h4>
+                            <ul class="text-left">
+                                <li>
+                                    <h5><strong>Upfront Pricing</strong></h5>
+                                    <p>Clear, fixed prices for all services. No hidden fees.</p>
+                                </li>
+                                <li>
+                                    <h5><strong>24/7 Availability</strong></h5>
+                                    <p>Round-the-clock support for all your needs.</p>
+                                </li>
+                                <li>
+                                    <h5><strong>Versatile Solutions</strong></h5>
+                                    <p>We tackle any request, no matter how unique.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="/assets/pexels-cottonbro-3584926.jpg" alt="Hero Image" style="height: 50vh; border: 5px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="row">
-				<div class="getting-started col-md-12">
-					<h5><STRONG>Find Freelance Services For Your Business</STRONG></h5>
-					<p>Hirex make your money flowing like water on the river</p><br>
-					<a href="/signup/1" class="btn btn-primary">Get Started</a>
-				</div>
-			</div>
-		</div>
-	</div>
+            <center><div class="row">
+                <div class="getting-started col-md-12">
+                    <h5><STRONG>Find Freelance Services For Your Business</STRONG></h5>
+                    <p>Hirex make your money flowing like water on the river</p><br>
+                    <a href="/login" class="btn btn-primary">Get Started</a>
+                </div>
+            </div></center>
+        </div>
+    </div>
 
-	<div class="container-fluid p-0 m-0">
-		<% include ../partials/footer %>
-	</div>
+    <!-- Team Section -->
+	<h2 class="text-center mb-4"><b>Meet Our Team</b></h2>
+    <div class="container my-5 team-section">
+       
+        <div class="row">
+            <div class="col-sm-2 team-member">
+                <img src="/assets/IMG_20250222_000013[1].JPG" alt="Team Member 1">
+                <h5><b>Vishnu Varmaa</b></h5>
+            </div>
+            <div class="col-sm-2 team-member">
+                <img src="/assets/IMG-20250221-WA0008[1].JPG" alt="Team Member 2">
+                <h5><b>Salman Shaik</b></h5>
+            </div>
+            <div class="col-sm-2 team-member">
+                <img src="/assets/WhatsApp Image 2025-02-21 at 23.56.33_5b8c4a57.jpg" alt="Team Member 3">
+                <h5><b>Dinesh</b></h5>
+                
+            </div>
+            <div class="col-sm-2 team-member">
+                <img src="/assets/1711112277293.JPG" alt="Team Member 4">
+                <h5><b>Sreeshanth</b></h5>
+            </div>
+            <div class="col-sm-2 team-member">
+                <img src="/assets/IMG_0715.PNG" alt="Team Member 5">
+                <h5><b>Lakshmi Priya</b></h5>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-0 m-0">
+        <% include ../partials/footer %>
+    </div>
 
 </body>
 <% include ../partials/script %>

@@ -20,12 +20,89 @@
 	<link rel="stylesheet" href="/css/profile/Social-Icons.css">
 	<link rel="stylesheet" href="/css/profile/Table-With-Search-1.css">
 	<link rel="stylesheet" href="/css/profile/Table-With-Search.css">
+	<style>
+		body {
+			font-family: 'Acme', sans-serif;
+			background-color: #fff;
+			color: #333;
+		}
+
+		.navbar {
+			background-color: #fff;
+			border-bottom: 2px solid #1dbf73;
+		}
+
+		.navbar-brand {
+			font-family: 'Chewy', cursive;
+			font-size: 32px;
+			color: #1dbf73;
+		}
+
+		.navbar-text .login {
+			font-size: 18px;
+			font-family: 'Acme', sans-serif;
+			color: #1dbf73;
+		}
+
+		.profile-card {
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+		.profile-back {
+			background-color: #1dbf73;
+			height: 150px;
+			margin-bottom: -75px;
+		}
+
+		.profile-pic {
+			width: 150px;
+			height: 150px;
+			margin-bottom: 10px;
+		}
+
+		.profile-name {
+			background-color: #1dbf73;
+			color: #fff;
+			font-size: 20px;
+			padding: 5px 0;
+			border-radius: 100px;
+			max-width: 300px;
+			margin: 0 auto 10px auto;
+		}
+
+		.profile-bio {
+			font-size: 20px;
+			margin-bottom: 30px;
+		}
+
+		.card {
+			border: 1px solid #1dbf73;
+		}
+
+		.card-footer {
+			background-color: #1dbf73;
+			color: #fff;
+		}
+
+		.btn-primary {
+			background-color: #1dbf73;
+			border-color: #1dbf73;
+		}
+
+		.btn-primary:hover {
+			background-color: #17a863;
+			border-color: #17a863;
+		}
+	</style>
 </head>
 
-<body style="font-family: Chewy, cursive;">
+<body>
 	<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
 		<div class="container">
-			<a class="navbar-brand" href="/" style="font-family: Chewy, cursive; font-size: 32px;">Hirex</a>
+			<a class="navbar-brand" href="/">
+				<img src="/assets/image.png" alt="Hirex Logo" style="height: 40px;">
+			</a>
 			<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="navbar-toggler-icon"></span>
@@ -33,12 +110,10 @@
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav mr-auto"></ul>
 				<span class="navbar-text actions">
-					<a class="login" href="/profile"
-						style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
+					<a class="login" href="/profile" style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
 				</span>
 				<span class="navbar-text actions">
-					<a class="login" href="/profile/settings-page"
-						style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
+					<a class="login" href="/profile/settings-page" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
 				</span>
 				<span class="navbar-text actions">
 					<a class="login" href="/profile/logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
@@ -48,14 +123,10 @@
 	</nav>
 
 	<div class="profile-card">
-		<div class="profile-back" style="background-color: #ff5331;"></div>
+		<div class="profile-back"></div>
 		<img class="rounded-circle profile-pic" src="/uploads/avatars/<%= data[0].user_avatar %>">
-		<h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;">
-			<%= data[0].user_name %>
-		</h3>
-		<p class="profile-bio" style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;">
-			<%= data[0].user_email %>
-		</p>
+		<h3 class="profile-name"><%= data[0].user_name %></h3>
+		<p class="profile-bio"><%= data[0].user_email %></p>
 	</div>
 
 	<div class="col-md-12 search-table-col">
@@ -88,13 +159,10 @@
 						<td><%= transact[i].transaction_datetime %></td>
 						<td>
 							<button class="btn btn-success" style="margin-left: 5px;" type="submit">
-								<a class="fa fa-check" style="font-size: 15px;"
-									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+								<a class="fa fa-check" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
 							</button>
-							<button class="btn btn-danger"
-								style="margin-left: 5px; margin-right: auto; margin-bottom: auto;" type="submit">
-								<a class="fa fa-trash" style="font-size: 15px;"
-									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+							<button class="btn btn-danger" style="margin-left: 5px; margin-right: auto; margin-bottom: auto;" type="submit">
+								<a class="fa fa-trash" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
 							</button>
 						</td>
 					</tr>
@@ -103,7 +171,7 @@
 			</table>
 		</div>
 	</div>
-	<p style="color:grey; font-family: Acme, sans-serif; font-size: 18px;">Copyright (c) 2019 Hirex</p>
+	<p style="color:grey; text-align: center;    font-family: sans-serif; font-size: 18px;">Copyright (c) 2025 Hirex</p>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

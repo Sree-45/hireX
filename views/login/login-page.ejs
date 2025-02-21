@@ -6,39 +6,133 @@
 	<meta name="author" content="W | K - Project Sangar" />
 	<title>Login Form</title>
 
-	<link href="/css/auth/style.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 	<link rel="shortcut icon" href="#" />
+	<style>
+		body {
+			background-color: white;
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.container {
+			display: flex;
+			max-width: 800px;
+			width: 100%;
+			background: white;
+			border-radius: 10px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.form-container {
+			flex: 1;
+			padding: 30px;
+		}
+
+		.image-container {
+			flex: 1;
+			background-image: url('/assets/Mobile-login-Cristina.jpg'); 
+			background-size: cover;
+			background-position: center;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+		.auth h1 {
+			color: #2ecc71;
+			margin-bottom: 20px;
+			font-size: 24px;
+		}
+
+		.field {
+			position: relative;
+			margin-bottom: 15px;
+		}
+
+		.field input {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			font-size: 14px;
+		}
+
+		.field i {
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #2ecc71;
+		}
+
+		.submit input {
+			background-color: #2ecc71;
+			color: white;
+			border: none;
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			width: 100%;
+			font-size: 16px;
+		}
+
+		.submit input:hover {
+			background-color: #27ae60;
+		}
+
+		.forgot a {
+			color: #2ecc71;
+			text-decoration: none;
+			font-size: 14px;
+		}
+
+		.copyright {
+			margin-top: 20px;
+			font-size: 12px;
+			color: #777;
+		}
+
+		.copyright a {
+			color: #2ecc71;
+		}
+	</style>
 </head>
 
-<body id="particles-js">
+<body>
+	<% include ../partials/simple-menu %>
 	<div class="container">
-		<div class="logo" style="background-image: url('https://user-images.githubusercontent.com/30113370/147396373-53c9becb-9235-49ab-89f2-bb42388952fc.png');"></div>
-		<!-- Login -->
-		<div class="auth">
-			<h1>Welcome</h1>
-			<form class="form auth" method="post"><br>
-				<p class="field">
-					<input type="text" name="u_adm" placeholder="Email" id="email-input" required />
-					<i class="fa fa-user"></i>
+		<div class="form-container">
+			<div class="auth">
+				<h1>Welcome</h1>
+				<form class="form auth" method="post"><br>
+					<p class="field">
+						<input type="text" name="u_adm" placeholder="Email" id="email-input" required />
+						<i class="fa fa-user"></i>
+					</p>
+					<p class="field">
+						<input type="password" name="p_adm" placeholder="Password" id="password-input" required />
+						<i class="fa fa-lock"></i>
+					</p>
+					<p class="submit"><input type="submit" name="commit" value="Login"></p>
+				</form>
+				<p class="forgot">
+					<a href="#">Forgot Password?</a>
 				</p>
-				<p class="field">
-					<input type="password" name="p_adm" placeholder="Password" id="password-input" required />
-					<i class="fa fa-lock"></i>
+			</div>
+			<div class="copyright">
+				<p><center>
+					Copyright &copy; 2025,
+					<a href="/" style="color: #2ecc71;"> Hirex</a></center>
 				</p>
-				<p class="submit"><input type="submit" name="commit" value="Login"></p>
-			</form>
-			<p class="forgot">
-				<a href="#">Forgot Password?</a>
-			</p>
-			<br>
+			</div>
 		</div>
-		<div class="copyright">
-			<p>
-				Copyright &copy; 2025,
-				<a style="color: gold" href="/"> Hirex</a>
-			</p>
+		<div class="image-container">
+			<img src="/assets/Mobile-login-Cristina.jpg" alt="" srcset="" style="height: 100%; width: 100%;">
 		</div>
 	</div>
 </body>
