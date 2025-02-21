@@ -1,6 +1,7 @@
 const db = require('../models');
 
 module.exports = (app) => {
+  // Route to get all products
   app.get('/products/all', (req, res) => {
     db.User.findAll({
       include: [{ model: db.Service }],
@@ -32,6 +33,7 @@ module.exports = (app) => {
     });
   });
 
+  // Route to get products by category
   app.get('/products/:categories', (req, res) => {
     db.User.findAll({
       include: [
@@ -68,6 +70,7 @@ module.exports = (app) => {
     });
   });
 
+  // Route to get product details by service ID
   app.get('/products/details/:servicesid', (req, res) => {
     db.User.findAll({
       include: [
@@ -105,6 +108,7 @@ module.exports = (app) => {
     });
   });
 
+  // Route to create a new transaction
   app.post('/products/transaction', (req, res) => {
     const today = new Date();
     const date = `${today.getFullYear()}-${
@@ -121,6 +125,7 @@ module.exports = (app) => {
       .catch((err) => res.json(err));
   });
 
+  // Route to delete a transaction by transaction ID
   app.get('/products/delete/:transaction_id', (req, res) => {
     db.Transaction.destroy({
       where: { transaction_id: req.params.transaction_id },

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-
 const Sequelize = require('sequelize');
 
 const env = process.env.NODE_ENV || 'development';
@@ -21,6 +20,9 @@ if (config.use_env_variable) {
   );
 }
 
+/**
+ * Read all model files in the current directory and import them into Sequelize.
+ */
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -32,12 +34,18 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
+/**
+ * If the model has an associate method, call it to set up associations.
+ */
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
+/**
+ * Set up associations between models.
+ */
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

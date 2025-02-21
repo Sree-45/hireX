@@ -1,6 +1,7 @@
 const multer = require('multer');
 const db = require('../models');
 
+// Configuration for uploading avatar images
 const upload = multer({
   storage: multer.diskStorage({
     destination(_req, _file, cb) {
@@ -11,6 +12,8 @@ const upload = multer({
     },
   }),
 });
+
+// Configuration for uploading service images
 const addPro = multer({
   storage: multer.diskStorage({
     destination(_req, _file, cb) {
@@ -23,6 +26,7 @@ const addPro = multer({
 });
 
 module.exports = (app) => {
+  // Route to get the profile page
   app.get('/profile', (req, res) => {
     if (req.user.user_role !== 2) {
       db.User.findAll({
@@ -95,13 +99,13 @@ module.exports = (app) => {
     }
   });
 
-  /** Route untuk me-logout user */
+  // Route to log out the user
   app.get('/profile/logout', (req, res) => {
     req.logout();
     res.redirect('/');
   });
 
-  /** Route untuk redirect ke halaman settings profile */
+  // Route to redirect to the profile settings page
   app.get('/profile/settings-page', (req, res) => {
     db.User.findOne({
       where: { user_id: req.user.user_id },
@@ -116,7 +120,7 @@ module.exports = (app) => {
     });
   });
 
-  /** Route untuk update data */
+  // Route to update profile data
   app.post(
     '/profile/settings/update-now',
     upload.single('avatarFile'),
@@ -133,7 +137,7 @@ module.exports = (app) => {
       db.User.update(newData, { where: { user_id: req.user.user_id } }).then(
         () => {
           req.login(req.user, (err) => {
-            if (err) next(new Error('Gagal update'));
+            if (err) next(new Error('Failed to update'));
           });
           res.redirect('/profile/settings-page');
         },
@@ -141,7 +145,7 @@ module.exports = (app) => {
     },
   );
 
-  /** Route untuk tambah service */
+  // Route to add a new service
   app.post('/profile/add-product', addPro.single('photo'), (req, res) => {
     db.Service.create({
       ID_category: req.body.category,
@@ -155,7 +159,7 @@ module.exports = (app) => {
       .catch((err) => res.json(err));
   });
 
-  /** Route untuk melihat list transaksi dari seller */
+  // Route to view the list of transactions from the seller
   app.get('/profile/seller/transactions', (req, res) => {
     db.Transaction.findAll({
       include: [

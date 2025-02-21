@@ -1,17 +1,24 @@
 const db = require('../models');
 
 module.exports = (app) => {
-  /** Register page */
+  /** 
+   * Route to display the registration page.
+   * If the user is already logged in, redirect to the products page.
+   * Otherwise, render the signup page with the specified role.
+   */
   app.get('/signup/:role', (req, res) => {
     if (req.user) {
       res.redirect('/products/all');
     } else {
-      // Jika user belum login
+      // If the user is not logged in
       res.render('signup/signup-page', { role: req.params.role });
     }
   });
 
-  /** Route untuk mendaftarkan user. Jika sukses, loginkan user */
+  /** 
+   * Route to register a new user.
+   * If successful, log in the user and redirect to the login route.
+   */
   app.post('/signup/signup-now', (req, res) => {
     db.User.create({
       user_email: req.body.user_email,

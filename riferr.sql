@@ -1,23 +1,23 @@
-
+-- Set SQL mode and start transaction
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+-- Create 'categories' table
 CREATE TABLE `categories` (
   `ID_category` int(11) NOT NULL,
   `category` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+-- Insert initial data into 'categories' table
 INSERT INTO `categories` (`ID_category`, `category`) VALUES
 (1, 'desain_web'),
 (2, 'desain_baju'),
 (3, 'printing'),
 (4, 'desain_logo');
 
-
+-- Create 'services' table
 CREATE TABLE `services` (
   `service_id` int(11) NOT NULL,
   `ID_category` int(11) NOT NULL,
@@ -28,8 +28,7 @@ CREATE TABLE `services` (
   `image_path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
+-- Insert initial data into 'services' table
 INSERT INTO `services` (`service_id`, `ID_category`, `user_id`, `service_title`, `service_desc`, `service_price`, `image_path`) VALUES
 (13, 2, 8, 'Sketsa Desain', 'Merancang desain baju dan kaos ', 200000, 'photo1576095814977.jpg'),
 (14, 2, 8, 'Desain PDH', 'Warna bisa disesuaikan, inshaallah hasil sesuai yang diharapkan.', 150000, 'photo1576096096924.jpg'),
@@ -55,6 +54,7 @@ INSERT INTO `services` (`service_id`, `ID_category`, `user_id`, `service_title`,
 (36, 3, 9, 'Wallpaper', 'Wallpaper', 1000, 'photo1576127370959.jpg'),
 (37, 1, 15, 'Simple Web App', 'descripsi agak pendek', 100000, 'photo1576132779173.jpg');
 
+-- Create 'transactions' table
 CREATE TABLE `transactions` (
   `transaction_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `transactions` (
   `transaction_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+-- Create 'users' table
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_email` varchar(40) NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE `users` (
   `user_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+-- Insert initial data into 'users' table
 INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_name`, `user_phone`, `user_address`, `user_avatar`, `user_role`) VALUES
 (1, 'admin@admin.com', 'admin', 'admin fiverr', '098000', 'jalan-in aja', 'default_avatar.jpg', 0),
 (2, 'seller1@seller1.com', 'seller1', 'seller1 coy', '0980009', 'jalan-in aja1', 'default_avatar.jpg', 1),
@@ -94,10 +94,9 @@ INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_name`, `use
 (15, 'kol@kol.com', '$2a$10$fNAhueMn7asPqgvDn9qdiOIbGwEnbcEq9yetqbLSea/trRyJwMHxi', 'kolel', '087855777360', 'Kamaku 1/38-A', 'avatarFile1576132934935.jpg', 1),
 (16, 'amir@amir.com', '$2a$10$XbWwbpkx.EZHa.ntUS10ZOYZmss.Adb/Ti4Lm4jaUuFGZF4mLbi0e', 'Amir Hakim', '087855777360', 'Kamaku 1/38-A', 'default_avatar.jpg', 2);
 
-
+-- Add primary keys and foreign keys
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`ID_category`);
-
 
 ALTER TABLE `services`
   ADD PRIMARY KEY (`service_id`),
@@ -109,17 +108,15 @@ ALTER TABLE `transactions`
   ADD KEY `service_id` (`service_id`),
   ADD KEY `user_id` (`user_id`);
 
-
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
-
+-- Modify columns to auto increment
 ALTER TABLE `categories`
   MODIFY `ID_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `services`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
 
 ALTER TABLE `transactions`
   MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
@@ -127,15 +124,15 @@ ALTER TABLE `transactions`
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
-
-
+-- Add foreign key constraints
 ALTER TABLE `services`
   ADD CONSTRAINT `services_ibfk_1` FOREIGN KEY (`ID_category`) REFERENCES `categories` (`ID_category`),
   ADD CONSTRAINT `services_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
-
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`),
   ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+-- Commit the transaction
 COMMIT;
 

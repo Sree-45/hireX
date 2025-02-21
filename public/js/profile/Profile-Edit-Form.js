@@ -1,4 +1,6 @@
+// Ensure the DOM is fully loaded before running the script
 $(document).ready(function () {
+  // Function to read the selected file and update the avatar background
   function readURL(input) {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
@@ -13,6 +15,7 @@ $(document).ready(function () {
     }
   }
 
+  // Attach a change event handler to the avatar file input
   $('input.form-control[name=avatarFile]').change(function () {
     readURL(this);
   });
@@ -43,7 +46,7 @@ $(document).ready(function () {
   //     emailUpdate.val('');
   // });
   //
-  // // Lakukan post ke update route. Jika sukses, kita redirect ke profile
+  // // Function to update user profile
   // function updateUser(user_name, user_phone, user_address, user_email) {
   //     $.post('/profile/settings/upload-avatar',{
   //       avatarFile:avatarUpdate

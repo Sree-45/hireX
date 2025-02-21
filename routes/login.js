@@ -1,19 +1,19 @@
 const passport = require('../config/passport');
 
 module.exports = (app) => {
-  // Jika user sudah login, kirim langsung ke dashboard user
+  // If the user is already logged in, redirect them to the user dashboard
   app.post('/login/login-now', passport.authenticate('local'), (req, res) => {
-    res.json('/profile');
-    // res.json('/profile/buyer')
+    res.json('/profile'); // Redirect to the profile page
+    // res.json('/profile/buyer') // Alternative redirect to buyer profile page
   });
 
   app.get('/login', (req, res) => {
-    // Jika user sudah login, redirect ke homepage
+    // If the user is already logged in, redirect to the homepage
     if (req.user) {
-      res.redirect('/products/all');
+      res.redirect('/products/all'); // Redirect to the products page
     } else {
-      // Jika user belum login
-      res.render('login/login-page');
+      // If the user is not logged in
+      res.render('login/login-page'); // Render the login page
     }
   });
 };

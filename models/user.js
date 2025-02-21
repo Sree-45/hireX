@@ -40,14 +40,25 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  // Buat custom method untuk user model
-  // method ini digunakan untuk membandingkan password
-  // eslint-disable-next-line func-names
+  /**
+   * Custom method to compare passwords.
+   * 
+   * This method compares the provided password with the hashed password stored in the database.
+   * 
+   * @param {string} userPassword - The password to compare.
+   * @returns {boolean} True if the passwords match, false otherwise.
+   */
   User.prototype.validPassword = function (userPassword) {
     return bcrypt.compareSync(userPassword, this.user_password);
   };
 
-  // Sebelum user dibuat, hash dulu passwordnya
+  /**
+   * Hook to hash the user's password before creating the user.
+   * 
+   * This hook hashes the user's password using bcrypt before storing it in the database.
+   * 
+   * @param {Object} user - The user object.
+   */
   User.beforeCreate((user) => {
     user.user_password = bcrypt.hashSync(
       user.user_password,
